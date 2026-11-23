@@ -26,6 +26,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements-serve.txt .
 RUN pip install --no-cache-dir -r requirements-serve.txt
 
+# Pre-download the embedding model so Render doesn't hang or OOM on the first request
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('BAAI/bge-small-en-v1.5')"
+
 # Copy backend, rag, common
 COPY backend/ ./backend/
 COPY common/ ./common/
@@ -39,11 +42,11 @@ ENV PYTHONUNBUFFERED=1 \
     LLM_BACKEND=fake \
     RAG_INDEX_DIR=rag/index
 
-EXPOSE 8000
+EXPOSE 8000 10000
 
 # Healthcheck
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD curl -f http://localhost:8000/health || exit 1
+    CMD curl -f http://localhost:${PORT:-8000}/health || exit 1
 
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
 

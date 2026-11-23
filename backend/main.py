@@ -41,8 +41,8 @@ settings = get_settings()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origin_list,
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -224,7 +224,8 @@ async def chat(req: ChatRequest, request: Request) -> StreamingResponse:
         media_type="text/event-stream",
         headers={
             "Cache-Control": "no-cache",  # never cache a stream
-            "X-Accel-Buffering": "no",    # disable proxy buffering (nginx)
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",    # disable proxy buffering (nginx / render)
         },
     )
 

@@ -50,7 +50,7 @@ class Settings(BaseSettings):
     history_token_budget: int = 1500
     # Hard cap on a single user message (characters; ~1 token per 4 chars).
     max_input_chars: int = 4000
-    cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
+    cors_origins: str = "*"
     rate_limit_requests: int = 20
     rate_limit_window_s: int = 60
 
