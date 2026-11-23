@@ -1,0 +1,13 @@
+.git
+.gitignore
+.venv
+**/__pycache__
+**/*.pyc
+.pytest_cache
+scratch_gpt/checkpoints
+scratch_gpt/logs
+finetune/outputs
+frontend/node_modules
+eval/reports
+*.tmp
+

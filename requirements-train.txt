@@ -1,0 +1,12 @@
+# Requirements for Part B training (QLoRA fine-tuning).
+# Intended for Google Colab (T4 GPU, CUDA 12.x) - see finetune/notebooks/train_colab.md.
+# bitsandbytes needs CUDA; this file is NOT for CPU-only machines.
+
+torch==2.5.1
+transformers==4.46.3
+datasets==3.1.0
+peft==0.13.2
+trl==0.12.1
+bitsandbytes==0.44.1
+accelerate==0.34.2
+sentencepiece==0.2.0

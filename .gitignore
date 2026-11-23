@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+
+# Model artifacts (regenerable - never commit GBs of weights)
+scratch_gpt/checkpoints/
+scratch_gpt/logs/
+scratch_gpt/data/input.txt
+scratch_gpt/data/char_tokenizer*.json
+finetune/outputs/
+finetune/data/train.jsonl
+finetune/data/val.jsonl
+finetune/data/train_tokenized.jsonl
+finetune/data/val_tokenized.jsonl
+finetune/data/synthetic_reviewed.jsonl
+finetune/data/REVIEW_synthetic.md
+# rag/index/ (uncomment if you want to rebuild index strictly from rag/docs)
+
+# Env / secrets
+.env
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Eval outputs (keep eval_set.jsonl and report_template.md, not results)
+eval/results.csv
+eval/results_summary.md

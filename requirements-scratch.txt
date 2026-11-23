@@ -1,0 +1,5 @@
+# Requirements for Part A: the from-scratch GPT (works on CPU or GPU).
+# Deliberately minimal: PyTorch + matplotlib only.
+
+torch==2.5.1
+matplotlib==3.9.3
