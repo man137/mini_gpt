@@ -19,7 +19,7 @@ finetune/data/train_tokenized.jsonl
 finetune/data/val_tokenized.jsonl
 finetune/data/synthetic_reviewed.jsonl
 finetune/data/REVIEW_synthetic.md
-# rag/index/ (uncomment if you want to rebuild index strictly from rag/docs)
+rag/index/
 
 # Env / secrets
 .env
